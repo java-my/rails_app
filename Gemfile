@@ -56,3 +56,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'font-awesome-sass', '~> 5.15'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
