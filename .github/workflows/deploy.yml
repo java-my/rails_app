@@ -19,4 +19,4 @@ jobs:
          # SSH接続して、git pullする
          echo "${{ secrets.PRIVATE_KEY }}" > private_key
          chmod 600 private_key
-         ssh -oStrictHostKeyChecking=no ${{ secrets.USER_NAME }}@${{ secrets.HOST_NAME }} -i private_key "cd rails_app && git fetch github:shuncask/kanpai.git && git pull github:shuncask/kanpai.git"
+         ssh -oStrictHostKeyChecking=no ${{ secrets.USER_NAME }}@${{ secrets.HOST_NAME }} -i private_key "cd rails_app && git fetch github:java-my/rails_app.git && git pull github:java-my/rails_app.git"
