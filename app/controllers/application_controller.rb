@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
           Current.user = User.find_by(id: session[:user_id])
         end
     end
+
+    def user_login_required
+      unless Current.user
+        flash[:warning] = "ログインをして、パスワードを更新してください。"
+        redirect_to login_path
+      end
+  end
 end

@@ -1,15 +1,20 @@
 <ul class="navbar-nav ms-5">
   <% if Current.user %>
-      <li class="nav-item">
-        <%= link_to Current.user.user_name, class: 'nav-link '%>
-      </li>
-      <li class="nav-item">
-        <%= link_to "ログアウト", logout_path, method: :delete, class: 'nav-link' %>
-      </li>
+    <li class="nav-item dropdown ms-5">
+       <%= link_to Current.user.user_name, password_path, class: "nav-link dropdown-toggle", id: "navbarScrollingDropdown", role: "button", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
+       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+          <li class="nav-item">
+            <%= link_to "編集", password_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", logout_path, method: :delete, class: 'nav-link' %>
+          </li>
    <% else %>
-      <li class="nav-item">
-        <%= link_to "ログイン", login_path, class: 'nav-link' %></li>
-      <li class="nav-item">
-        <%= link_to "新規登録", signup_path, class: 'nav-link' %></li>
-   <% end  %>
+          <li class="nav-item">
+            <%= link_to "ログイン", login_path, class: 'nav-link' %></li>
+          <li class="nav-item">
+            <%= link_to "新規登録", signup_path, class: 'nav-link' %></li>
+          </ul>
+   <% end %>
+     </li>
 </ul>
