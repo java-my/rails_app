@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "password/reset/edit", to: "password_resets#edit"
   patch "password/reset/edit", to: "password_resets#update"
 
+  resources :articles
+
 
   #メール
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
