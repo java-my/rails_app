@@ -8,4 +8,13 @@ Rails.application.routes.draw do
 
   get "password", to: "passwords#edit"
   patch "password", to: "passwords#update"
+
+  get "password/reset", to: "password_resets#new"
+  post "password/reset", to: "password_resets#create"
+  get "password/reset/edit", to: "password_resets#edit"
+  patch "password/reset/edit", to: "password_resets#update"
+
+
+  #メール
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
