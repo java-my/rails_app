@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
     def user_login_required
       unless Current.user
-        flash[:warning] = "ログインをして、パスワードを更新してください。"
+        flash[:warning] = "ログインをしてください。"
         redirect_to login_path
       end
   end

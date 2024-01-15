@@ -1,12 +1,28 @@
 <h1>Articles</h1>
-<ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ユーザ名</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">本文</th>
+      <th scope="col">投稿管理</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
-    <li>
-      <%= article.body %>
-    </li>
+  <tr>
+    <td><%= article.user.user_name %></td>
+    <td><%= link_to article.title, article %></td>
+    <td><%= article.body %></td>
+    <td><%= link_to "Show", article_path(article), class: 'btn btn-secondary' %>
+    
+    <% if Current.user && Current.user.id == article.user_id %>
+    <%= link_to "Edit", edit_article_path(article), class: 'btn btn-primary' %>
+    <%= link_to "Delete", article_path(article),
+    method: :delete, data: {confirm: "削除してよろしいでしょうか？"}, class: 'btn btn-danger' %></td>
+    <% end %>
+    </tr>
   <% end %>
-</ul>
-<%= link_to "New Article", new_article_path %>
+  </tbody>
+</table>
+<%= link_to "New Article", new_article_path, class: "btn btn-primary" %>

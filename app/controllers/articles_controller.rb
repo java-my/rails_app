@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
+  before_action :user_login_required, only: %i[new create edit update destroy]
+  before_action :set_article, only: %i[edit update destroy]
+
   def index
-    @articles = Article.all
+    @articles = Article.all.includes(:user)
   end
 
   def new
@@ -16,7 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Current.user.articles.build(article_params)
     if @article.save
       flash[:success] = "記事が作成できました。"
       redirect_to @article
@@ -27,7 +30,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find_by(id: [params[:id]])
+    unless @article.user_id == Current.user.id
+      flash[:danger] = "投稿を管理する権限がありません。"
+      redirect_to @article
+    end
   end
 
   def update
@@ -42,7 +48,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find_by(id: [params[:id]])
+    unless @article.user_id == Current.user.id
+      flash[:danger] = "投稿を管理する権限がありません。"
+      redirect_to @article
+    end
     @article.destroy
     flash[:success] = "投稿が削除されました。"
     redirect_to articles_path
@@ -52,5 +61,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body)
+  end
+
+  def set_article
+    @article = Article.find_by(id: params[:id])
   end
 end
