@@ -63,3 +63,7 @@ group :production do
 end
 
 gem 'rails-i18n'
+
+gem 'draper'
+
+gem 'enum_help'

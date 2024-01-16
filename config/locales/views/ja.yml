@@ -15,6 +15,12 @@ ja:
       destroyed: '%{item}を削除しました'
       delete_confirm: '%{item}を削除してもよろしいでしょうか？'
       not_authorized: '権限がありません'
+  enums:
+      user:
+        gender:
+          other: その他
+          male: 男性
+          female: 女性
   sessions:
     new:
       title: 'ログイン'

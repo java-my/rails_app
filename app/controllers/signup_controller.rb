@@ -1,6 +1,8 @@
 class SignupController < ApplicationController
   def new
     @user = User.new
+    pp @user
+    @gender_options = User.genders_i18n.invert.map{|key,value|[key,value]}
   end
 
   def create
@@ -15,6 +17,6 @@ class SignupController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:user_name, :email, :gender, :password, :password_confirmation)
   end
 end
