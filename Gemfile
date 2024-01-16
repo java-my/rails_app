@@ -61,3 +61,5 @@ gem 'font-awesome-sass', '~> 5.15'
 group :production do
   gem 'unicorn'
 end
+
+gem 'rails-i18n'

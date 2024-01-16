@@ -1,6 +1,9 @@
 <div class="ms-5">
   <% if Current.user %>
     <h1>ようこそ <%= Current.user.user_name %> さん</h1>
-    <%= button_to "ログアウト", logout_path, method: :delete, class: 'btn btn-primary' %>
+    <%= button_to t('defaults.logout'), logout_path, method: :delete, class: 'btn btn-primary' %>
+
+    <%= link_to t('articles.index.title'), articles_path %>
+
   <% end %>
 </div>

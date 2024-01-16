@@ -21,10 +21,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Current.user.articles.build(article_params)
     if @article.save
-      flash[:success] = "記事が作成できました。"
+      flash[:success] = t('defaults.message.created', item: Article.model_name.human)
       redirect_to @article
     else
-      flash[:danger] = "記事の作成が失敗しました。もう一度試してください。"
+      flash.now[:danger] = t('defaults.message.not_created', item: Article.model_name.human)
       render :new
     end
   end
