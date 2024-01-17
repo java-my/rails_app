@@ -1,3 +1,5 @@
+<%= render 'comments/form', { article: @article, comment: @comment } %>
+<%= render 'comments/comments', { comments: @comments } %>
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 <li><%= link_to "編集", edit_article_path(@article) %></li>

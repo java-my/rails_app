@@ -1,0 +1,18 @@
+(function() {
+<%# 既に表示されているエラーメッセージがあった場合は削除する %>
+document.querySelector('.error_messages')?.remove();
+<% if @comment.errors.any? %>
+  <%# エラーがある、処理失敗時にはエラーメッセージのパーシャルを表示させる %>
+  let commentErrors = '<%= j(render('shared/error_messages', object: @comment)) %>';
+  let newCommentForm = document.getElementById('new_comment');
+  newCommentForm.insertAdjacentHTML('afterbegin', commentErrors);
+<% else %>
+  let commentTemplate = '<%= j(render('comments/comment', article: @article, comment: @comment)) %>';
+  let commentContainer = document.getElementById('js-comment-container');
+  <%# エラーがない、処理成功時には作成されたコメント内容をHTML要素として追加する %>
+  commentContainer.insertAdjacentHTML('afterbegin', commentTemplate);
+  <%# コメント入力フォームのテキストは表示する必要がないので、空文字に置き換えて内容をクリアする %>
+  let newCommentBody = document.getElementById('js-new-comment-body');
+  newCommentBody.value = '';
+<% end %>
+})();

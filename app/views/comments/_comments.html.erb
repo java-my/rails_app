@@ -1,0 +1,44 @@
+<% @article.comments.each do |comment| %>
+  <div class="card mb-4" id="comment-<%= comment.id %>">
+    <div class="card-body">
+      <div class="d-flex justify-content-between mb-3">
+        <p><%= simple_format(comment.body) %></p>
+        <% if comment.user_id == Current.user.id %>
+          <ul class='crud-menu-btn list-inline float-right'>
+            <li class="list-inline-item">
+              <%= link_to article_comment_path(@article, comment), 
+                class: 'js-delete-comment-button', 
+                method: :delete, 
+                id: "button-delete-#{comment.id}", 
+                data: { confirm: "削除してよろしいでしょうか？" }, 
+                remote: true do %>
+                <%= icon 'fas', 'trash' %>
+              <% end %>
+            </li>
+          </ul>
+        <% else %>
+
+          <ul class='crud-menu-btn list-inline float-right'>
+            <li class="list-inline-item">
+              <%= link_to "", 
+                class: 'js-delete-comment-button', 
+                data: { confirm: "権限がありません。" }, 
+                remote: true do %>
+                <%= icon 'fas', 'trash' %>
+              <% end %>
+            </li>
+          </ul>
+
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex flex-row align-items-center">
+          <p class="small mb-0 ms-2"><%= comment.user.user_name %></p>
+        </div>
+        <div class="d-flex flex-row align-items-center">
+          <p class="small text-muted mb-0"><%= l(comment.created_at, format: :long) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end  %>

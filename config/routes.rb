@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   patch "password/reset/edit", to: "password_resets#update"
 
   resources :articles
+  resources :articles do
+    resources :comments, only: %i[create destroy]
+  end
 
 
   #メール

@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by(id: [params[:id]])
+    @comment = Comment.new
+    @comments = @article.comments.includes(:user).order(created_at: :desc)
+
     if @article.nil?
       flash[:danger] = "記事が見つかりませんでした。"
       redirect_to root_path
@@ -48,13 +51,14 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    unless @article.user_id == Current.user.id
+    if @article.user_id == Current.user.id
+      @article.destroy
+      flash[:success] = "投稿が削除されました。"
+      redirect_to articles_path
+    else
       flash[:danger] = "投稿を管理する権限がありません。"
       redirect_to @article
     end
-    @article.destroy
-    flash[:success] = "投稿が削除されました。"
-    redirect_to articles_path
   end
 
   private

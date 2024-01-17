@@ -1,0 +1,4 @@
+var commentElement = document.getElementById('comment-<%= @comment.id %>');
+if (commentElement) {
+commentElement.parentNode.removeChild(commentElement);
+}

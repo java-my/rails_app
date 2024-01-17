@@ -3,12 +3,15 @@ ja:
     models:
       user: 'ユーザー'
       article: '投稿'
+      comment: 'コメント'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         user_name: 'ユーザー'
+      comment:
+        body: 'コメント'
       article:
         title: 'タイトル'
         body: '本文'
