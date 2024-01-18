@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[edit update destroy]
 
   def index
-    @articles = Article.all.includes(:user)
+    @articles = Article.all.includes(:user).page(params[:page]).per(10)
   end
 
   def new
@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(id: [params[:id]])
     @comment = Comment.new
     @comments = @article.comments.includes(:user).order(created_at: :desc)
-
     if @article.nil?
       flash[:danger] = "記事が見つかりませんでした。"
       redirect_to root_path

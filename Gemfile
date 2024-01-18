@@ -67,3 +67,5 @@ gem 'rails-i18n'
 gem 'draper'
 
 gem 'enum_help'
+
+gem 'kaminari'

@@ -27,4 +27,7 @@
   <% end %>
   </tbody>
 </table>
+<div class="m-3">
+  <%= paginate @articles %>
+</div>
 <%= link_to "新規作成", new_article_path, class: "btn btn-primary" %>
