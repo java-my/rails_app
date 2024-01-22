@@ -1,4 +1,4 @@
-<h1>記事一覧</h1>
+<h1>メモ一覧</h1>
 <%= link_to "新規作成", new_article_path, class: "btn btn-primary" %>
 <div class="m-3 w-auto">
   <%= paginate @articles %>
@@ -18,11 +18,11 @@
     <td><%= article.user.user_name %></td>
     <td><%= link_to article.title, article %></td>
     <td><%= article.body %></td>
-    <td><%= link_to "Show", article_path(article), class: 'btn btn-secondary' %>
+    <td><%= link_to "見る", article_path(article), class: 'btn btn-secondary' %>
 
     <% if Current.user && Current.user.id == article.user_id %>
-    <%= link_to "Edit", edit_article_path(article), class: 'btn btn-primary' %>
-    <%= link_to "Delete", article_path(article),
+    <%= link_to "編集", edit_article_path(article), class: 'btn btn-primary' %>
+    <%= link_to "削除", article_path(article),
     method: :delete, data: {confirm: "削除してよろしいでしょうか？"}, class: 'btn btn-danger' %>
     <%= l(article.created_at, format: :long) %>
     </td>

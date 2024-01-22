@@ -9,7 +9,7 @@
     <%= form.label :password, User.human_attribute_name(:password) %>
     <%= form.password_field :password, class: "form-control mb-3"  %>
   </div>
-  <%= form.submit t('defaults.login'), class:'btn btn-primary d-block mx-auto' %>
+  <%= form.submit t('defaults.login'), class:'btn btn-primary d-block mb-3' %>
   <%= link_to t('.to_register_page'), signup_path, class: 'link-secondary d-inline-block ms-3' %>
   <%= link_to t('.password_forget'), password_reset_path, class: 'link-secondary d-inline-block ms-3' %>
   <% end  %>

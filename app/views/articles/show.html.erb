@@ -1,8 +1,10 @@
-<%= render 'comments/form', { article: @article, comment: @comment } %>
-<%= render 'comments/comments', { comments: @comments } %>
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
-<li><%= link_to "編集", edit_article_path(@article) %></li>
-<li><%= link_to "削除", article_path(@article),
-   method: :delete, data: {confirm: "削除してよろしいでしょうか？"} %></li>
-<%= link_to t('articles.index.title'), articles_path %>
+<div class="row pb-5">
+  <div class="col-1 text-center p-0"><%= link_to "編集", edit_article_path(@article), class: 'text-decoration-none text-info' %></div>
+  <div class="col-1 text-center p-0"><%= link_to "削除", article_path(@article),
+     method: :delete, data: {confirm: "削除してよろしいでしょうか？"}, class: 'text-decoration-none text-info' %></div>
+  <div class="col-1 text-center p-0"><%= link_to t('articles.index.title'), articles_path, class: 'text-decoration-none text-info' %></div>
+</div>
+<%= render 'comments/form', { article: @article, comment: @comment } %>
+<%= render 'comments/comments', { comments: @comments } %>
