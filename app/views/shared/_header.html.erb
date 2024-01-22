@@ -1,6 +1,6 @@
-<ul class="navbar-nav ms-5">
+<ul class="navbar-nav">
   <% if Current.user %>
-    <li class="nav-item dropdown ms-5">
+    <li class="nav-item dropdown">
        <%= link_to Current.user.user_name, password_path, class: "nav-link dropdown-toggle", id: "navbarScrollingDropdown", role: "button", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
           <li class="nav-item">
@@ -10,10 +10,11 @@
             <%= link_to "ログアウト", logout_path, method: :delete, class: 'nav-link' %>
           </li>
     <% else %>
+  <div>コメントが投稿できるメモアプリです</div>
           <li class="nav-item">
-            <%= link_to "ログイン", login_path, class: 'nav-link' %></li>
+            <%= link_to "ログイン", login_path, class: 'nav-link text-info' %></li>
           <li class="nav-item">
-            <%= link_to "新規登録", signup_path, class: 'nav-link' %></li>
+            <%= link_to "新規登録", signup_path, class: 'nav-link text-info' %></li>
           </ul>
     <% end %>
     </li>

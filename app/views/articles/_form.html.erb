@@ -1,17 +1,17 @@
 <%= form_with model: @article do |form| %>
   <% article.errors.full_messages.each do |message| %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show w-25" role="alert">
       <%= message %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
-  <div>
+  <div class="bg-red">
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, size: 35 %>
   </div>
   <div>
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, size: "55x3" %>
   </div>
   <div>
     <%= form.submit %>

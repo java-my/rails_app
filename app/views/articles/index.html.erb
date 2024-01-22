@@ -1,4 +1,8 @@
 <h1>記事一覧</h1>
+<%= link_to "新規作成", new_article_path, class: "btn btn-primary" %>
+<div class="m-3 w-auto">
+  <%= paginate @articles %>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -27,7 +31,3 @@
   <% end %>
   </tbody>
 </table>
-<div class="m-3">
-  <%= paginate @articles %>
-</div>
-<%= link_to "新規作成", new_article_path, class: "btn btn-primary" %>

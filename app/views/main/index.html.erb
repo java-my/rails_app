@@ -1,9 +1,7 @@
-<div class="ms-5">
   <% if Current.user %>
-    <h1>ようこそ <%= Current.user.user_name %> さん</h1>
-    <%= button_to t('defaults.logout'), logout_path, method: :delete, class: 'btn btn-primary' %>
-
-    <%= link_to t('articles.index.title'), articles_path %>
-
+    <div class="border p-3 w-25 mb-2">
+      <h1 class="fs-2">ようこそ <%= Current.user.user_name %> さん</h1>
+      <%= button_to t('defaults.logout'), logout_path, method: :delete, class: 'btn btn-primary' %>
+    </div>
+    <%= link_to t('articles.index.title'), articles_path, class: 'text-decoration-none text-info' %>
   <% end %>
-</div>
