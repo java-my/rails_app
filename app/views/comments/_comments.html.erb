@@ -2,7 +2,7 @@
   <div class="card mb-4" id="comment-<%= comment.id %>">
     <div class="card-body">
       <div class="d-flex justify-content-between mb-3">
-        <p><%= simple_format(comment.body) %></p>
+        <%= simple_format(comment.body) %>
         <% if comment.user_id == Current.user.id %>
           <ul class='crud-menu-btn list-inline float-right'>
             <li class="list-inline-item">
